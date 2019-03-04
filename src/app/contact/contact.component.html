@@ -1,0 +1,39 @@
+<div class="row">
+  <h4>Nous contacter</h4>
+  <div class="blankdivider30">
+  </div>
+  <div class="row">
+    <div class="span12">
+      <div class="cform" id="contact-form">
+        <div id="sendmessage">Votre message à était envoyé, on vous remercie!</div>
+        <div id="errormessage"></div>
+        <form action="" method="post" role="form" class="contactForm">
+          <div class="row">
+            <div class="span6">
+              <div class="field your-name form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Plus de 4 caractères" />
+                <div class="validation"></div>
+              </div>
+              <div class="field your-email form-group">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Veuillez entrer un email valide" />
+                <div class="validation"></div>
+              </div>
+              <div class="field subject form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="8 caractères minimum" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="span6">
+              <div class="field message form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Qu'avez vous a nous communiquer" placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
+              <input type="submit" value="Envoyer" class="btn btn-theme pull-left">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- ./span12 -->
+  </div>
+</div>

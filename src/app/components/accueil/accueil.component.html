@@ -1,0 +1,12 @@
+<app-chargement *ngIf="chargement"></app-chargement>
+
+<div *ngIf="erreur" class="alert alert-danger animated fadeIn">
+    <h3>Erreur</h3>
+    <p>
+        {{ messageErreur }}
+    </p>
+</div>
+
+
+
+<app-vue [items]="nouvelleChanson"></app-vue>
