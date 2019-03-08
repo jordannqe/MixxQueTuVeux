@@ -1,0 +1,61 @@
+<app-chargement *ngIf="chargement"></app-chargement>
+
+<div class="row animated fadeIn" *ngIf="!chargement">
+  <div class="col-2">
+    <img [src]="artiste.images | noimage" class="img-thumbnail img-circle" />
+  </div>
+
+  <div class="col">
+    <h3>{{ artiste.name }}</h3>
+    <p>
+      <a [href]="artiste.external_urls.spotify" target="_blank">
+        <button class="btn btn-outline-primary">
+          Voir la page de l'artiste
+        </button>
+      </a>
+    </p>
+  </div>
+
+  <div class="col-4 text-right">
+    <button routerLink="/search" class="btn btn-outline-danger">
+        Revenir à la page de recherche
+    </button>
+  </div>
+</div>
+<!-- Lister tout les titres de l'artiste-->
+<div class="row m-5">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Album</th>
+          <th>Chanson</th>
+          <th>Visualisation</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let titre of topTitre">
+          <td>
+            <img [src]="titre.album.images | noimage" class="img-thumb" />
+          </td>
+          <td>{{ titre.album.name }}</td>
+          <td>{{ titre.name }}</td>
+          <td>
+
+            <iframe
+              [src]="titre.uri | domseguro"
+              width="320"
+              height="90"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </td>
+          <td>hfeoizgfioezg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
