@@ -13,20 +13,6 @@ import { ContactComponent } from './contact/contact.component';
 import { EndWeekPlaylistComponent } from './end-week-playlist/end-week-playlist.component';
 import { HeaderComponent } from './header/header.component';
 
-// Spotify
-
-import { AccueilComponent } from './components/accueil/accueil.component';
-import { RechercheComponent } from './components/recherche/recherche.component';
-import { ArtisteComponent } from './components/artiste/artiste.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-
-import { NoimagePipe } from './pipes/noimage.pipe';
-import { DomseguroPipe } from './pipes/domseguro.pipe';
-
-
-import { VueComponent } from './components/vue/vue.component';
-import { ChargementComponent } from './components/shared/chargement/chargement.component';
-
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
   {path: 'auth/signup', component: SignupComponent},
@@ -48,15 +34,6 @@ const appRoutes: Routes = [
     ContactComponent,
     EndWeekPlaylistComponent,
     HeaderComponent,
-    // Spotify
-    AccueilComponent,
-    RechercheComponent,
-    ArtisteComponent,
-    NavbarComponent,
-    NoimagePipe,
-    DomseguroPipe,
-    VueComponent,
-    ChargementComponent
   ],
   imports: [
     BrowserModule,
