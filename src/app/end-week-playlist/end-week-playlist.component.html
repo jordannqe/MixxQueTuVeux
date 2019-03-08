@@ -1,0 +1,12 @@
+<div class="row">
+  <div *ngFor="let music of musiquesPlaylist">
+    <ul>
+      <li [ngClass]="{'list-group-item': true}">
+        <h4>
+          Titre : {{ music.idMusique }} -- nom : {{ music.name }} -- durée : {{ music.duree }} -- auteur : {{ music.auteur }} -- genre : {{ music.genre }}
+           -- nombre de votes : {{ music.nbVotes }}
+        </h4>
+      </li>
+    </ul>
+  </div>
+</div>
