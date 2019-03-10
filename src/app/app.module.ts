@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { ContactComponent } from './contact/contact.component';
 import { EndWeekPlaylistComponent } from './end-week-playlist/end-week-playlist.component';
 import { HeaderComponent } from './header/header.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   {path: 'end-week-playlist', component: EndWeekPlaylistComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'accueil', component: AccueilComponent},
   {path: '', redirectTo: 'profile', pathMatch: 'full'},
   {path: '**', redirectTo: 'profile'}
   ];
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     ContactComponent,
     EndWeekPlaylistComponent,
     HeaderComponent,
+    AccueilComponent,
   ],
   imports: [
     BrowserModule,
