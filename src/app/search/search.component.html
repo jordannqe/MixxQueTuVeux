@@ -1,32 +1,31 @@
-<h4>Ajouter musique</h4>
-<div class="blankdivider30">
+<div class="form-inline justify-content-center mb-3">
+  <input type="search" #newquery [value]="query" (keydown.enter)="submit(newquery.value)" class="form-control form-control-lg w-75"
+         placeholder="Recherche de musiques ou d'artiste">
+  <button (click)="submit(newquery.value)" class="btn btn-primary btn-lg ml-3" type="button">Rechercher</button>
 </div>
-<div class="row">
-  <div class="span12">
-    <div class="cform" id="contact-form">
-      <div id="errormessage"></div>
-      <form action="" method="post" role="form" class="contactForm">
-        <div class="row">
-          <div class="span6">
-            <div class="field your-name form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Nom de la musique" data-rule="minlen:4" data-msg="Plus de 4 caractères" />
-              <div class="validation"></div>
-            </div>
-            <div class="field your-email form-group">
-              <input type="text" class="form-control" name="auteur" id="auteur" placeholder="Auteur" data-rule="minlen:4" data-msg="Veuillez entrer un auteur valide" />
-              <div class="validation"></div>
-            </div>
-            <div class="field subject form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Genre" data-rule="minlen:4" data-msg="Genre valide" />
-              <div class="validation"></div>
-            </div>
-          </div>
-          <div class="span6">
-            <input type="submit" value="Ajouter la musique" class="btn btn-theme pull-left">
-          </div>
+
+<div *ngIf="results">
+  <p *ngIf="!results.length">
+    Pas de résultat'{{ query }}'.
+  </p>
+
+  <div class="row" *ngIf="results.length">
+
+    <div class="col-3 mb-3" *ngFor="let track of results">
+      <div class="card h-100">
+        <img class="card-img-top" src="{{ track.album.images[0].url }}" alt="{{track.album.name}} cover art">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a [routerLink]="['/tracks', track.id]" >{{track.name}}</a>
+          </h5>
+          <p class="card-text">
+            <a [routerLink]="['/artists', track.artists[0].id]" >{{track.artists[0].name}}</a>
+            <br/>
+            <a [routerLink]="['/albums', track.album.id]" >{{track.album.name}}</a>
+          </p>
         </div>
-      </form>
+      </div>
     </div>
+
   </div>
-  <!-- ./span12 -->
 </div>

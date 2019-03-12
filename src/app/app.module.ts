@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -14,6 +15,12 @@ import { EndWeekPlaylistComponent } from './end-week-playlist/end-week-playlist.
 import { HeaderComponent } from './header/header.component';
 import { AccueilComponent } from './accueil/accueil.component';
 
+import { ArtisteComponent } from './artiste/artiste.component';
+import { AlbumComponent } from './album/album.component';
+import { SpotifyService } from './spotify.service';
+import { HttpModule } from '@angular/http';
+import {TrackComponent} from './track/track.component';
+
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
   {path: 'auth/signup', component: SignupComponent},
@@ -22,13 +29,18 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'search', component: SearchComponent},
   {path: 'accueil', component: AccueilComponent},
-  {path: '', redirectTo: 'profile', pathMatch: 'full'},
-  {path: '**', redirectTo: 'profile'}
-  ];
+  {path: '', redirectTo: 'acceuil', pathMatch: 'full'},
+  {path: '**', redirectTo: 'acceuil'},
+
+  { path: 'artists/:id', component: ArtisteComponent },
+  { path: 'tracks/:id', component: TrackComponent },
+  { path: 'albums/:id', component: AlbumComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
+    AccueilComponent,
     SigninComponent,
     SignupComponent,
     ProfileComponent,
@@ -37,15 +49,23 @@ const appRoutes: Routes = [
     EndWeekPlaylistComponent,
     HeaderComponent,
     AccueilComponent,
+
+    ArtisteComponent,
+    TrackComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes) // toutes les routes se trouvent dans la variable appRoutes
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: SpotifyService, useClass: SpotifyService },
+    { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
