@@ -11,6 +11,7 @@ import { SpotifyService } from '../spotify.service';
 export class TrackComponent implements OnInit {
   id: string;
   track: Object;
+  uri: any;
 
   constructor(
     private location: Location,
@@ -27,6 +28,7 @@ export class TrackComponent implements OnInit {
       .getTrack(this.id)
       .subscribe((res: any) => {
         this.renderTrack(res);
+        this.getUri(res);
       });
   }
 
@@ -36,6 +38,15 @@ export class TrackComponent implements OnInit {
 
   back(): void {
     this.location.back();
+  }
+
+  getUri(res: any): string {
+    this.uri = res.id;
+    return this.uri;
+  }
+
+  ajouterVote() {
+    console.log(this.uri);
   }
 
 }

@@ -5,9 +5,20 @@
         <img src="{{ track.album.images[1].url }}" alt="{{ track.album.name }}">
     </p>
 
-    <p>
-        <audio controls src="{{ track.preview_url }}"></audio>
-    </p>
+   <!-- <p>
+        <audio controls src="{{ track.prewiew_url }}"></audio>
+    </p>-->
 </div>
+<iframe
+  [src]="track.uri | transformation"
+  width="320"
+  height="90"
+  frameborder="0"
+  allowtransparency="true"
+  allow="encrypted-media"
+>
 
-<a href (click)="back()">Retour</a>
+</iframe>
+
+<a href (click)="back()">Retour</a><br>
+<button (click)="ajouterVote()"> Ajouter Vote</button>

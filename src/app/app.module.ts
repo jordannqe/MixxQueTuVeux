@@ -21,6 +21,8 @@ import { SpotifyService } from './spotify.service';
 import { HttpModule } from '@angular/http';
 import {TrackComponent} from './track/track.component';
 
+import { TransformationPipe } from './pipes/transformation.pipe';
+
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
   {path: 'auth/signup', component: SignupComponent},
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
 
     ArtisteComponent,
     TrackComponent,
-    AlbumComponent
+    AlbumComponent,
+    TransformationPipe
   ],
   imports: [
     BrowserModule,
