@@ -10,7 +10,6 @@
   </p>
 
   <div class="row" *ngIf="results.length">
-
     <div class="col-3 mb-3" *ngFor="let track of results">
       <div class="card h-100">
         <img class="card-img-top" src="{{ track.album.images[0].url }}" alt="{{track.album.name}} cover art">
