@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <h2>Me connecter à mon compte</h2>
-    <form> <!-- ne ppas oublier de paramétrer le form -->
+    <form [formGroup]="userForm"> <!-- ne ppas oublier de paramétrer le form -->
       <div class="form-group">
-        <label for="email">Adresse mail ou nom d'utilisateur</label>
+        <label for="email">Adresse mail</label>
         <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
         <input type="text"
                id="email"
@@ -20,8 +20,10 @@
       </div>
       <button class="btn btn-primary"
               type="submit"
-              [disabled]="signinForm.invalid">Me connecter</button>
-      <input type="submit" value="Créer un compte" class="btn btn-theme pull-left" href="../signup/signup.component.html">
+              routerLink="../../profile"
+              [disabled]="userForm.invalid"
+              (click)="connect()">Me connecter</button>
+      <input type="submit" value="Créer un compte" class="btn btn-theme pull-left" routerLink="../signup">
     </form>
     <p class="text-danger">{{ errorMessage }}</p>
   </div>

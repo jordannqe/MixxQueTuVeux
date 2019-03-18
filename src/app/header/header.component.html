@@ -10,8 +10,13 @@
       <li routerLinkActive="active">
         <a id="titre" routerLink="contact">Contact</a>
       </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active"
+          *ngIf="!isAuth">
         <a id="titre" routerLink="auth/signin">Connexion</a>
+      </li>
+      <li routerLinkActive="active"
+          >
+        <a id="titre" *ngIf="isAuth" routerLink="auth/signin">Déconnexion</a>
       </li>
     </ul>
   </div>
