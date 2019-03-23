@@ -7,16 +7,25 @@
       <li routerLinkActive="active">
         <a id="titre" routerLink="accueil">Accueil</a>
       </li>
+      <li routerLinkActive="active" *ngIf="isAuth">
+        <a id="titre" routerLink="search">Rechercher</a>
+      </li>
       <li routerLinkActive="active">
         <a id="titre" routerLink="contact">Contact</a>
       </li>
-      <li routerLinkActive="active"
-          *ngIf="!isAuth">
+      <li routerLinkActive="active" *ngIf="isAuth">
+        <a id="titre" routerLink="profile">Mon profil</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a id="titre" routerLink="auth/signup">Créer un compte</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
         <a id="titre" routerLink="auth/signin">Connexion</a>
       </li>
-      <li routerLinkActive="active"
-          >
-        <a id="titre" *ngIf="isAuth" routerLink="auth/signin">Déconnexion</a>
+      <li>
+        <a id="titre" (click)="onSignOut()"
+           style="cursor:pointer"
+           *ngIf="isAuth">Déconnexion</a>
       </li>
     </ul>
   </div>

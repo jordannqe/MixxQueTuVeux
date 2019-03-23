@@ -1,34 +1,9 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <h2>Créer un compte</h2>
-    <form [formGroup]="userForm"> <!-- ne ppas oublier de paramétrer le form -->
-      <div class="form-group">
-        <label for="name">Nom</label>
-        <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
-        <input type="text"
-               id="name"
-               class="form-control"
-               formControlName="name">
-      </div>
-      <div class="form-group">
-        <label for="surname">Prénom</label>
-        <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
-        <input type="text"
-               id="surname"
-               class="form-control"
-               formControlName="surname">
-      </div>
-      <div class="form-group">
-        <label for="pseudo">UserName</label>
-        <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
-        <input type="text"
-               id="pseudo"
-               class="form-control"
-               formControlName="pseudo">
-      </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Adresse mail</label>
-        <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
         <input type="text"
                id="email"
                class="form-control"
@@ -36,7 +11,6 @@
       </div>
       <div class="form-group">
         <label for="password">Mot de passe</label>
-        <!-- id=nom du champ qu'on va récupérer dans la méthode onSubmit-->
         <input type="password"
                id="password"
                class="form-control"
@@ -44,9 +18,7 @@
       </div>
       <button class="btn btn-primary"
               type="submit"
-              routerLink="../../profile"
-              [disabled]="userForm.invalid"
-              (click)="connect()">Créer mon compte</button>
+              [disabled]="signupForm.invalid">Créer mon compte</button>
     </form>
     <p class="text-danger">{{ errorMessage }}</p>
   </div>

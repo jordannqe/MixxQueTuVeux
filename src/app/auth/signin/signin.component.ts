@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent} from "../../app.component";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,26 +10,35 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class SigninComponent implements OnInit {
 
-  userForm : FormGroup;
+  signinForm: FormGroup;
+  errorMessage: string;
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
-    this.userForm = this.formBuilder.group({
-      'email': ['', [Validators.required, Validators.email]],
-      'password': ['', [Validators.required]]
+    this.signinForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
     });
   }
 
-  connect() {
-    console.log('Connexion réussie');
-  }
-  
-  
+  onSubmit() {
+    const email = this.signinForm.get('email').value;
+    const password = this.signinForm.get('password').value;
 
+    this.authService.signInUser(email, password).then(
+      () => {
+        this.router.navigate(['/end-week-playlist']);
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
+  }
 }
