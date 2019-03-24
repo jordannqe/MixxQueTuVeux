@@ -10,15 +10,15 @@ export class AppComponent {
   title = 'MixxQueTuVeux';
 
   constructor() {
-    var config = {
-      apiKey: "AIzaSyDM7LJBxINzn98FVJ5dW_s0sCsYOsOC3Yc",
-      authDomain: "mixxquetuveuxx.firebaseapp.com",
-      databaseURL: "https://mixxquetuveuxx.firebaseio.com",
-      projectId: "mixxquetuveuxx",
-      storageBucket: "",
-      messagingSenderId: "698773037024"
+    const config = {
+      apiKey: 'AIzaSyBt5ztcsMMq9sKlDvqell1Eo9fCMFhpIrk',
+      authDomain: 'mixxquetuveux-5585e.firebaseapp.com',
+      databaseURL: 'https://mixxquetuveux-5585e.firebaseio.com',
+      projectId: 'mixxquetuveux-5585e',
+      storageBucket: 'mixxquetuveux-5585e.appspot.com',
+      messagingSenderId: '855205442194'
     };
-      firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
   }
 }
