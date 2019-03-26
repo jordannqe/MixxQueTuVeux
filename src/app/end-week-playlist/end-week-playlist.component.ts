@@ -20,6 +20,7 @@ export class EndWeekPlaylistComponent implements OnInit {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, ' => ', doc.data());
     });
+
   });
   }
 

@@ -89,6 +89,7 @@ export class TrackComponent implements OnInit {
       idVote: vote.id,
       idUtilisateur: user.uid,
       idMusique: musique.id,
+      note: 0,
       dateVote: date,
     });
 
