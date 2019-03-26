@@ -57,7 +57,10 @@ const appRoutes: Routes = [
     TrackComponent,
     AlbumComponent,
     TransformationPipe,
+<<<<<<< HEAD
     VoteMusiqueComponent
+=======
+>>>>>>> 6418973c47b5c545520423bbae52759fa22650b7
   ],
   imports: [
     BrowserModule,
