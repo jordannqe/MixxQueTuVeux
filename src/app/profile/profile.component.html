@@ -26,15 +26,15 @@
         {{music.genre}}
       </td>
       <td class="col-3">
-        <div class="row"  style="text-align: center">
+        <div class="row" style="text-align: center">
           <div class="col-6">
-            <h1 style="cursor: pointer;">+</h1>
+            <h1 (click)="incr()" style="cursor: pointer;">+</h1>
           </div>
           <div class="col-6">
-            <h1 style="cursor: pointer;">-</h1>
+            <h1 (click)="dec()" style="cursor: pointer;">-</h1>
           </div>
           <div class="col-12">
-            <h1><!-- la note du jeu --></h1>
+            <h1>{{vote}}</h1>
           </div>
         </div>
       </td>

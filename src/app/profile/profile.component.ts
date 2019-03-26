@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-
+  @Input() vote: number;
   mesMusiques = [
     {
       idMusique: '1',
@@ -31,10 +30,22 @@ export class ProfileComponent implements OnInit {
       genre: 'metal'
     }
   ];
-
-  constructor() { }
+  constructor(vote: number) {
+    this.vote = 0;
+  }
 
   ngOnInit() {
+  }
+  incr() {
+    if (this.vote < 5) {
+      this.vote++;
+    }
+  }
+
+  dec() {
+    if (this.vote > 0) {
+      this.vote--;
+    }
   }
 
 }
