@@ -20,5 +20,6 @@ export class AppComponent {
     };
     firebase.initializeApp(config);
 
+    var db = firebase.firestore();
   }
 }

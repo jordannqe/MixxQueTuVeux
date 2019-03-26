@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     ArtisteComponent,
     TrackComponent,
     AlbumComponent,
-    TransformationPipe
+    TransformationPipe,
   ],
   imports: [
     BrowserModule,

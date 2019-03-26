@@ -4,10 +4,6 @@
     <p>
         <img src="{{ track.album.images[1].url }}" alt="{{ track.album.name }}">
     </p>
-
-   <!-- <p>
-        <audio controls src="{{ track.prewiew_url }}"></audio>
-    </p>-->
 </div>
 <iframe
   [src]="track.uri | transformation"
@@ -17,8 +13,8 @@
   allowtransparency="true"
   allow="encrypted-media"
 >
-
 </iframe>
+
 <br>
 <a href (click)="back()">Retour</a><br>
 <button (click)="ajouterVote()"> Ajouter Vote</button>
