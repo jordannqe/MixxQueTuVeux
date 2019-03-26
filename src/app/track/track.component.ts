@@ -17,6 +17,7 @@ export class TrackComponent implements OnInit {
   artiste: string[];
   genre: any;
   duree: any;
+  user: any;
   nbArtiste: number;
 
 
@@ -67,8 +68,8 @@ export class TrackComponent implements OnInit {
   }
 
   ajouterVote() {
-    let user = firebase.auth().currentUser;
-    user = user.toJSON();
+    this.user = firebase.auth().currentUser;
+    this.user = this.user.toJSON();
     const database = firebase.firestore();
     const now = new Date();
     const date = now.toDateString();
@@ -87,8 +88,9 @@ export class TrackComponent implements OnInit {
 
     vote.set({
       idVote: vote.id,
-      idUtilisateur: user.uid,
+      idUtilisateur: this.user.uid,
       idMusique: musique.id,
+      note: 0,
       dateVote: date,
     });
 
