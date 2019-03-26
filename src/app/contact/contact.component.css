@@ -4,3 +4,8 @@ h4{
 #sendmessage{
   color: white;
 }
+.contact{
+  margin: 0 auto;
+  width: 500px;
+  height: 100px;
+}

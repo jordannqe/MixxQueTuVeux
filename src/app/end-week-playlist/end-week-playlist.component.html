@@ -1,10 +1,38 @@
-  <div *ngFor="let music of musiquesPlaylist">
-    <ul>
-      <li [ngClass]="{'list-group-item': true}">
-        <h4>
-          Titre : {{ music.idMusique }} -- nom : {{ music.name }} -- durée : {{ music.duree }} -- auteur : {{ music.auteur }} -- genre : {{ music.genre }}
-           -- nombre de votes : {{ music.nbVotes }}
-        </h4>
-      </li>
-    </ul>
-  </div>
+<div class="row">
+  <table class="table table-striped">
+    <thead class="header">
+    <th scope="col">id</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Durée</th>
+    <th scope="col">Auteur</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Nombre de votes</th>
+    <th scope="col">Ajouter a mes votes</th>
+    </thead>
+    <tbody class="tab">
+    <tr *ngFor="let music of musiquesPlaylist">
+      <td class="col-3">
+        {{music.idMusique}}
+      </td>
+      <td class="col-3">
+        {{music.name}}
+      </td>
+      <td class="col-3">
+        {{music.duree}}
+      </td>
+      <td class="col-3">
+        {{music.auteur}}
+      </td>
+      <td class="col-3">
+        {{music.genre}}
+      </td>
+      <td class="col-3">
+        {{music.nbVotes}}
+      </td>
+      <td class="col-3">
+        <input type="submit" value="Ajouter" class="btn btn-theme pull-left">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
