@@ -22,7 +22,6 @@ import { HttpModule } from '@angular/http';
 import {TrackComponent} from './track/track.component';
 
 import { TransformationPipe } from './pipes/transformation.pipe';
-import { VoteMusiqueComponent } from './vote-musique/vote-musique.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
@@ -34,7 +33,6 @@ const appRoutes: Routes = [
   {path: 'accueil', component: AccueilComponent},
   {path: '', redirectTo: 'acceuil', pathMatch: 'full'},
   {path: '**', redirectTo: 'acceuil'},
-
   { path: 'artists/:id', component: ArtisteComponent },
   { path: 'tracks/:id', component: TrackComponent },
   { path: 'albums/:id', component: AlbumComponent }
@@ -56,11 +54,7 @@ const appRoutes: Routes = [
     ArtisteComponent,
     TrackComponent,
     AlbumComponent,
-    TransformationPipe,
-<<<<<<< HEAD
-    VoteMusiqueComponent
-=======
->>>>>>> 6418973c47b5c545520423bbae52759fa22650b7
+    TransformationPipe
   ],
   imports: [
     BrowserModule,

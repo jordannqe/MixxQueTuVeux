@@ -6,7 +6,7 @@
     <th scope="col">Durée</th>
     <th scope="col">Auteur</th>
     <th scope="col">Genre</th>
-    <th scope="col">Ajouter a mes votes</th>
+    <th scope="col">Ma note</th>
     </thead>
     <tbody class="tab">
     <tr *ngFor="let music of mesMusiques">
@@ -26,7 +26,17 @@
         {{music.genre}}
       </td>
       <td class="col-3">
-        <input type="submit" value="Ajouter" class="btn btn-theme pull-left">
+        <div class="row"  style="text-align: center">
+          <div class="col-6">
+            <h1 style="cursor: pointer;">+</h1>
+          </div>
+          <div class="col-6">
+            <h1 style="cursor: pointer;">-</h1>
+          </div>
+          <div class="col-12">
+            <h1><!-- la note du jeu --></h1>
+          </div>
+        </div>
       </td>
     </tr>
     </tbody>
