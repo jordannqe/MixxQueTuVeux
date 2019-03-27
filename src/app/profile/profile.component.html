@@ -17,7 +17,7 @@
         {{music.name}}
       </td>
       <td class="col-3">
-        {{music.duree}}
+        {{music.duree}}gut
       </td>
       <td class="col-3">
         {{music.auteur}}
@@ -26,19 +26,21 @@
         {{music.genre}}
       </td>
       <td class="col-3">
-        <div class="row" style="text-align: center">
-          <div class="col-6">
-            <h1 (click)="incr()" style="cursor: pointer;">+</h1>
-          </div>
-          <div class="col-6">
-            <h1 (click)="dec()" style="cursor: pointer;">-</h1>
-          </div>
-          <div class="col-12">
-            <h1>{{vote}}</h1>
-          </div>
-        </div>
+        <form>
+          <select id="mySelect">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </form>
+      </td>
+      <td>
+        <input type="button" value="Ajouter">
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+
