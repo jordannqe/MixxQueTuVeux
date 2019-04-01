@@ -22,6 +22,7 @@ import { HttpModule } from '@angular/http';
 import {TrackComponent} from './track/track.component';
 
 import { TransformationPipe } from './pipes/transformation.pipe';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     ArtisteComponent,
     TrackComponent,
     AlbumComponent,
-    TransformationPipe
+    TransformationPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

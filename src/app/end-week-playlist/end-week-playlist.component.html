@@ -6,13 +6,14 @@
     <th scope="col">Auteur</th>
     <th scope="col">Genre</th>
     <th scope="col">Nombre de votes</th>
+    <th scope="col"></th>
     </thead>
     <tbody class="tab">
     <tr *ngFor="let music of mesMusiques; index as i">
-      <td class="col-3">
+      <td class="col-1">
         {{i+1}}
       </td>
-      <td class="col-3">
+      <td class="col-4">
         {{music.name}}
       </td>
       <td class="col-3">
@@ -21,14 +22,14 @@
       <td class="col-3">
         {{music.genre}}
       </td>
-      <td class="col-3">
+      <td class="col-2">
         {{music.nbVotes}}
       </td>
-      <td class="col-4">
-        <button (click)="ajouterVote()"> Ajouter Profil</button>
+      <td class="col-3">
+        <button (click)="ajouterVote()"> Ajouter à mon profil</button>
       </td>
     </tr>
     </tbody>
   </table>
-  <p *ngFor="let varT of test">{{ varT }}</p>
+
 </div>
