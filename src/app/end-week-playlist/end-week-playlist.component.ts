@@ -47,12 +47,9 @@ export class EndWeekPlaylistComponent implements OnInit {
     database.collection('musiques').get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
         stockageMax = doc.data();
-        console.log('test 1', stockageMax);
-        console.log(stockageMax.length);
         for (const key in stockageMax) {
           const value = stockageMax[key];
-          console.log('test');
-          console.log(key, '+', value, 'youpiiiii ?');
+          console.log(key, ':', value, 'youpiiiii ?');
         }
         /*
         const stockage = doc.data();
