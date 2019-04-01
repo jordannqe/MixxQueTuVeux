@@ -1,24 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { SpotifyService } from '../spotify.service';
 import * as firebase from 'firebase';
-import {timestamp} from 'rxjs-compat/operator/timestamp';
+
 
 @Component({
   selector: 'app-track',
   templateUrl: './track.component.html',
   styleUrls: ['./track.component.css']
 })
+
 export class TrackComponent implements OnInit {
-  id: string;
-  track: Object;
-  uri: string;
-  artiste: string[];
-  genre: any;
-  duree: any;
-  user: any;
-  nbArtiste: number;
+  public id: string;
+  public track: Object;
+  public uri: string;
+  public artiste: string[];
+  public genre: any;
+  public duree: any;
+  public user: any;
+  public nb: string[];
 
 
   constructor(
@@ -26,11 +27,16 @@ export class TrackComponent implements OnInit {
     private route: ActivatedRoute,
     private spotifyService: SpotifyService,
   ) {
+    const database = firebase.firestore();
+    const musique = database.collection('musiques');
     route.params.subscribe(params => {
       this.id = params['id'];
     });
     this.artiste = [];
+
   }
+
+
 
   ngOnInit(): void {
     this.spotifyService
@@ -42,6 +48,8 @@ export class TrackComponent implements OnInit {
         this.getDuree(res);
       });
   }
+
+
 
   renderTrack(res: any): void {
     this.track = res;
@@ -67,6 +75,11 @@ export class TrackComponent implements OnInit {
     this.duree = res.duration_ms;
   }
 
+  fe(doc: any) {
+    this.nb.push(doc);
+
+  }
+
   ajouterVote() {
     this.user = firebase.auth().currentUser;
     this.user = this.user.toJSON();
@@ -78,24 +91,43 @@ export class TrackComponent implements OnInit {
     const artiste = database.collection('artiste').doc();
     const album = database.collection('album').doc();
     const genre = database.collection('genre').doc();
+    const musiqueDoc = database.collection('musiques');
+    let nb = 0;
+    const user = this.user.uid;
+    const duree = this.duree;
+    const uri = this.uri;
 
-    musique.set({
-      idMusique: musique.id,
-      auteur: this.artiste,
-      duree: this.duree,
-      uri: this.uri,
+    musiqueDoc.where('uri', '==', this.uri).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id);
+        nb = nb + 1;
+      });
+      if (nb > 0) {
+        vote.set({
+          idVote: vote.id,
+          idUtilisateur: user,
+          idMusique: musique.id,
+          note: 0,
+          nbVote: 0,
+          dateVote: date,
+        });
+      } else {
+        musique.set({
+          idMusique: musique.id,
+          auteur: artiste,
+          duree: duree,
+          uri: uri,
+        });
+
+        vote.set({
+          idVote: vote.id,
+          idUtilisateur: user,
+          idMusique: musique.id,
+          note: 0,
+          nbVote: 0,
+          dateVote: date,
+        });
+      }
     });
-
-    vote.set({
-      idVote: vote.id,
-      idUtilisateur: this.user.uid,
-      idMusique: musique.id,
-      note: 0,
-      dateVote: date,
-    });
-
-
-
-
   }
 }
