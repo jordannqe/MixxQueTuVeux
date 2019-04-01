@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import {forEach} from '@angular/router/src/utils/collection';
+import GetOptions = firebase.firestore.GetOptions;
+import {DocumentSnapshot} from 'firebase-functions/lib/providers/firestore';
 
 @Component({
   selector: 'app-end-week-playlist',
@@ -38,7 +40,45 @@ export class EndWeekPlaylistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.afficherPlaylist();
+    // this.afficherPlaylist();
+    const result = [];
+    let stockageMax;
+    const database = firebase.firestore();
+    database.collection('musiques').get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        stockageMax = doc.data();
+        console.log('test 1', stockageMax);
+        console.log(stockageMax.length);
+        for (const key in stockageMax) {
+          const value = stockageMax[key];
+          console.log('test');
+          console.log(key, '+', value, 'youpiiiii ?');
+        }
+        /*
+        const stockage = doc.data();
+        stockage.auteur.get().then(snap => {
+          stockage.auteur = snap.data();
+          stockageMax.push(stockage);
+        });*/
+        /*
+        const stat = {
+          'auteur': doc.data().auteur,
+          'genre': doc.data().genre
+        };
+        console.log(stat);
+        */
+        // result = result.concat(stat);
+        // this.renderMusic(doc);
+      });
+    });
+    // console.log(stockageMax);
+/*
+    for (let key = 0; key < stockageMax.length; key++) {
+      const value = stockageMax[key];
+      console.log('test');
+      console.log(key, '+', value, 'youpiiiii ?');
+    }
+    */
   }
 
   afficherPlaylist() {
@@ -65,15 +105,19 @@ export class EndWeekPlaylistComponent implements OnInit {
   }
   */
   renderMusic(doc) {
-    const li = document.createElement('li');
+    /*
     const name = document.createElement('span');
     const auteur = document.createElement('span');
     const genre = document.createElement('span');
-
-    li.setAttribute('data-id', doc.id);
-    name.textContent = doc.data().name;
+    // name.textContent = doc.data().name;
     auteur.textContent = doc.data().auteur;
     genre.textContent = doc.data().genre;
+    console.log(auteur, '|', genre);
+    */
+
+
+
+
   }
 }
 
