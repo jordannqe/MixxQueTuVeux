@@ -49,7 +49,7 @@ export class EndWeekPlaylistComponent implements OnInit {
         stockageMax = doc.data();
         for (const key in stockageMax) {
           const value = stockageMax[key];
-          console.log(key, ':', value, 'youpiiiii ?');
+          console.log(key, ':', value);
         }
         /*
         const stockage = doc.data();
