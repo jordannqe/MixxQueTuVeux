@@ -1,12 +1,12 @@
-#body{
-  text-align:center;
+.presentation{
+  text-align: center;
+  border: solid black;
 }
-li{
-  list-style-type:none;
+.div1{
+  border: solid black;
+  font-style: italic;
 }
-p{
-  color: black;
-}
-h1{
-  color:black;
+h2{
+
+  text-decoration: underline;
 }
