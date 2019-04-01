@@ -1,7 +1,7 @@
 <div class="form-inline justify-content-center mb-3">
   <input type="search" #newquery [value]="query" (keydown.enter)="submit(newquery.value)" class="form-control form-control-lg w-75"
          placeholder="Recherche de musiques ou d'artiste">
-  <button (click)="submit(newquery.value)" class="btn btn-primary btn-lg ml-3" type="button">Rechercher</button>
+  <button (click)="submit(newquery.value)" class="btn btn-primary ml-3" type="button">Rechercher</button>
 </div>
 
 <div *ngIf="results">
@@ -11,12 +11,12 @@
 
   <div class="row" *ngIf="results.length">
     <div class="col-3 mb-3" *ngFor="let track of results">
-      <div class="card h-100">
+      <div class="card h-100 hvr-pulse-grow">
         <img class="card-img-top" src="{{ track.album.images[0].url }}" alt="{{track.album.name}} cover art">
         <div class="card-body">
-          <h5 class="card-title">
+          <h3 class="card-title">
             <a [routerLink]="['/tracks', track.id]" >{{track.name}}</a>
-          </h5>
+          </h3>
           <p class="card-text">
             <a [routerLink]="['/artists', track.artists[0].id]" >{{track.artists[0].name}}</a>
             <br/>

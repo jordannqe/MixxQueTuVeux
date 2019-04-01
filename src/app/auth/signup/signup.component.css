@@ -14,3 +14,10 @@ h2{
   box-shadow: 2px 2px 20px rgba(20, 20, 20, 0.3);
 
 }
+
+.btn{
+  background-color: mediumseagreen;
+}
+.btn:hover{
+  background-color: seagreen;
+}

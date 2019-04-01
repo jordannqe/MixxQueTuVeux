@@ -37,15 +37,16 @@ table{
 }
 
 input{
-  background-color: beige;
   border-radius: 9px;
   width: 60%;
   height: 100%;
   padding: 5px;
 }
 
-input:hover{
-  background-color: papayawhip;
+
+.btn{
+  background-color: mediumseagreen;
 }
-
-
+.btn:hover{
+  background-color: seagreen;
+}

@@ -2,6 +2,10 @@
   font-size: large;
   margin-left: 20px;
   margin-right: 20px;
+  background-color: mediumseagreen;
+}
+.btn:hover{
+  background-color: seagreen;
 }
 .body{
   background-color: whitesmoke;
