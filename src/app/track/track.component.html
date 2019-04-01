@@ -1,5 +1,7 @@
+<div class="body">
 <div *ngIf="track">
     <h1>{{ track.name }}</h1>
+  <hr/>
 
     <p>
         <img src="{{ track.album.images[1].url }}" alt="{{ track.album.name }}">
@@ -14,7 +16,7 @@
   allow="encrypted-media"
 >
 </iframe>
-
-<br>
-<a href (click)="back()">Retour</a><br>
-<button (click)="ajouterVote()"> Ajouter Vote</button>
+<br/>
+<button class="btn btn-primary" (click)="back()">Retour</button>
+<button class="btn btn-primary" (click)="ajouterVote()">Voter</button>
+</div>

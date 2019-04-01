@@ -1,0 +1,15 @@
+.btn{
+  font-size: large;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.body{
+  background-color: whitesmoke;
+  border: 1px solid rgba(20, 20, 20, 0.2);
+  border-radius: 9px;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  box-shadow: 2px 2px 20px rgba(20, 20, 20, 0.3);
+  text-align: center;
+}
