@@ -28,3 +28,6 @@
   border-bottom: 3px solid mediumseagreen;
 }
 
+#title:active{
+  background-color: none;
+}

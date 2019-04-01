@@ -25,18 +25,18 @@ import { TransformationPipe } from './pipes/transformation.pipe';
 import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
+  {path: 'accueil', component: AccueilComponent},
   {path: 'auth/signin', component: SigninComponent},
   {path: 'auth/signup', component: SignupComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'end-week-playlist', component: EndWeekPlaylistComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'accueil', component: AccueilComponent},
-  {path: '', redirectTo: 'acceuil', pathMatch: 'full'},
-  {path: '**', redirectTo: 'acceuil'},
   { path: 'artists/:id', component: ArtisteComponent },
   { path: 'tracks/:id', component: TrackComponent },
-  { path: 'albums/:id', component: AlbumComponent }
+  { path: 'albums/:id', component: AlbumComponent },
+  {path: '', redirectTo: '/accueil', pathMatch: 'full'},
+  {path: '**', redirectTo: '/accueil'}
 ];
 
 @NgModule({
