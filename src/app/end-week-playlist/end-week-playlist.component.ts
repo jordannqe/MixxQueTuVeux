@@ -10,7 +10,6 @@ import {DocumentSnapshot} from 'firebase-functions/lib/providers/firestore';
   styleUrls: ['./end-week-playlist.component.css']
 })
 export class EndWeekPlaylistComponent implements OnInit {
-  /*
   mesMusiques = [
     {
       idMusique: '1',
@@ -34,13 +33,15 @@ export class EndWeekPlaylistComponent implements OnInit {
       genre: 'metal'
     }
   ];
-  */
 
   constructor() {
   }
 
   ngOnInit() {
     // this.afficherPlaylist();
+    let auteur: string;
+    let titre: string;
+    let genre: string;
     const result = [];
     let stockageMax;
     const database = firebase.firestore();
@@ -50,6 +51,9 @@ export class EndWeekPlaylistComponent implements OnInit {
         for (const key in stockageMax) {
           const value = stockageMax[key];
           console.log(key, ':', value);
+          if (key === 'auteur') { auteur = value; }
+          if (key === 'titre') { titre = value; }
+          if (key === 'genre') { genre = value; }
         }
         /*
         const stockage = doc.data();
