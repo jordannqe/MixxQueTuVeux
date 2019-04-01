@@ -8,6 +8,7 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./end-week-playlist.component.css']
 })
 export class EndWeekPlaylistComponent implements OnInit {
+  /*
   mesMusiques = [
     {
       idMusique: '1',
@@ -31,12 +32,13 @@ export class EndWeekPlaylistComponent implements OnInit {
       genre: 'metal'
     }
   ];
+  */
+
   constructor() {
   }
 
   ngOnInit() {
     this.afficherPlaylist();
-    this.afficherPlaylistB();
   }
 
   afficherPlaylist() {
@@ -48,15 +50,30 @@ export class EndWeekPlaylistComponent implements OnInit {
       });
     });
   }
+  /*
   afficherPlaylistB() {
     const database = firebase.firestore();
-    database.collection('musiques').where('duree', '==', 226993)
-      .get()
-      .then(function(querySnapshot) {
+    let tableauMusique: string[];
+    database.collection('musiques').get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
           console.log('New ==> ', doc.id, ' => ', doc.data());
+          console.log('New ==> ', doc.id, ' => ', doc.data().duree);
+          tableauMusique.push(doc.data().duree);
       });
+      return tableauMusique;
     });
+  }
+  */
+  renderMusic(doc) {
+    const li = document.createElement('li');
+    const name = document.createElement('span');
+    const auteur = document.createElement('span');
+    const genre = document.createElement('span');
+
+    li.setAttribute('data-id', doc.id);
+    name.textContent = doc.data().name;
+    auteur.textContent = doc.data().auteur;
+    genre.textContent = doc.data().genre;
   }
 }
 
