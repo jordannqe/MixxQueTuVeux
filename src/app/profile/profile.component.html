@@ -1,29 +1,17 @@
 <div class="row">
   <table class="table table-striped">
     <thead class="header">
-    <th scope="col">id</th>
     <th scope="col">Nom</th>
-    <th scope="col">Durée</th>
     <th scope="col">Auteur</th>
-    <th scope="col">Genre</th>
     <th scope="col">Ma note</th>
     </thead>
     <tbody class="tab">
     <tr *ngFor="let music of mesMusiques">
       <td class="col-3">
-        {{music.idMusique}}
-      </td>
-      <td class="col-3">
         {{music.name}}
       </td>
       <td class="col-3">
-        {{music.duree}}gut
-      </td>
-      <td class="col-3">
         {{music.auteur}}
-      </td>
-      <td class="col-3">
-        {{music.genre}}
       </td>
       <td class="col-3">
         <form>
