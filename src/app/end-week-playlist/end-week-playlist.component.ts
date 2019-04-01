@@ -8,6 +8,29 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./end-week-playlist.component.css']
 })
 export class EndWeekPlaylistComponent implements OnInit {
+  mesMusiques = [
+    {
+      idMusique: '1',
+      name: 'music 1',
+      auteur: 'moi',
+      duree: '3m50',
+      genre: 'rap'
+    },
+    {
+      idMusique: '2',
+      name: 'music 2',
+      auteur: 'toi',
+      duree: '3m10',
+      genre: 'rap'
+    },
+    {
+      idMusique: '3',
+      name: 'music 3',
+      auteur: 'vous',
+      duree: '4m50',
+      genre: 'metal'
+    }
+  ];
   constructor() {
   }
 
