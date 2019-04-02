@@ -1,9 +1,9 @@
-<div *ngIf="artiste">
+<button class="btn btn-primary hvr-backward" (click)="back()">Retour</button>
+<div id="body" *ngIf="artiste">
     <h1>{{ artiste.name }}</h1>
-
+    <hr style="width: 80%"/>
     <p>
-        <img src="{{ artiste.images[0].url }}" alt="{{ artiste.name }}">
+        <img class="hvr-pulse-grow" id="picture" src="{{ artiste.images[0].url }}" alt="{{ artiste.name }}">
     </p>
 </div>
 
-<a href (click)="back()">Back</a>

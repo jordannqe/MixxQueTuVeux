@@ -31,5 +31,7 @@ export class ArtisteComponent implements OnInit {
   rendueArtiste(res: any): void {
     this.artiste = res;
   }
-
+  back(): void {
+    this.location.back();
+  }
 }
