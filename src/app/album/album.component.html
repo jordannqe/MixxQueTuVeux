@@ -1,18 +1,28 @@
-<div *ngIf="album">
+<button class="btn btn-primary hvr-backward" (click)="back()">Retour</button>
+<div class="body" *ngIf="album">
   <h1>{{ album.name }}</h1> <!-- album.name -->
+  <hr/>
   <h2>{{ album.artists[0].name }}</h2>
+  <hr/>
   
   <p>
-      <img src="{{ album.images[1].url }}" alt="{{ album.name }}">
+      <img class="hvr-pulse-grow" id="picture" src="{{ album.images[1].url }}" alt="{{ album.name }}">
   </p>
-  
+  <div  class="trackList">
   <h3>Tracks</h3>
-  
-  <ol>
-    <li *ngFor="let track of album.tracks.items">
-      <a [routerLink]="['/tracks', track.id]" >{{ track.name }}</a>
-    </li>
-  </ol>
+    <hr/>
+    <table class="table">
+      <thead>
+      <th class="col-1 num">#</th>
+      <th class="col-3 title">Titre</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let track of album.tracks.items; index as i">
+        <td class="col-1 num">{{ i + 1 }}</td>
+        <td class="col-3 title"><a [routerLink]="['/tracks', track.id]" >{{ track.name }}</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<a href (click)="back()">Retour</a>
