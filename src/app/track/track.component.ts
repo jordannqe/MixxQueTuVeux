@@ -20,6 +20,7 @@ export class TrackComponent implements OnInit {
   public duree: any;
   public user: any;
   public nb: string[];
+  public titre: string;
 
 
   constructor(
@@ -46,6 +47,7 @@ export class TrackComponent implements OnInit {
         this.getUri(res);
         this.getArtiste(res);
         this.getDuree(res);
+        this.getTitre(res);
       });
   }
 
@@ -58,6 +60,11 @@ export class TrackComponent implements OnInit {
   back(): void {
     this.location.back();
   }
+
+  getTitre(res: any): void {
+    this.titre = res.name;
+
+}
 
   getUri(res: any): void {
     this.uri = res.uri;
@@ -75,11 +82,6 @@ export class TrackComponent implements OnInit {
     this.duree = res.duration_ms;
   }
 
-  fe(doc: any) {
-    this.nb.push(doc);
-
-  }
-
   ajouterVote() {
     this.user = firebase.auth().currentUser;
     this.user = this.user.toJSON();
@@ -88,18 +90,23 @@ export class TrackComponent implements OnInit {
     const date = now.toDateString();
     const musique = database.collection('musiques').doc();
     const vote = database.collection('vote').doc();
-    const artiste = database.collection('artiste').doc();
-    const album = database.collection('album').doc();
-    const genre = database.collection('genre').doc();
+    const artiste = this.artiste;
+    const titre = this.titre;
     const musiqueDoc = database.collection('musiques');
     let nb = 0;
+    let nbPlaylist = 0;
     const user = this.user.uid;
     const duree = this.duree;
     const uri = this.uri;
+    const playlist = database.collection('playlist');
+    const playlistDoc = database.collection('playlist').doc();
+    let playlistId = '';
+    let nbVote = 1;
+
 
     musiqueDoc.where('uri', '==', this.uri).get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-        console.log(doc.id);
+        console.log(doc.id)
         nb = nb + 1;
       });
       if (nb > 0) {
@@ -126,6 +133,27 @@ export class TrackComponent implements OnInit {
           note: 0,
           nbVote: 0,
           dateVote: date,
+        });
+      }
+    });
+
+    playlist.where('uri', '==', this.uri).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id);
+        playlistId = doc.id;
+        nbVote = doc.data().nbVote;
+        nbPlaylist = nbPlaylist + 1;
+      });
+      if (nbPlaylist > 0) {
+        playlist.doc(playlistId).update({
+          nbVote: nbVote + 1
+        });
+      } else {
+        playlistDoc.set({
+          nom: titre,
+          artiste: artiste,
+          nbVote: 1,
+          uri: uri
         });
       }
     });

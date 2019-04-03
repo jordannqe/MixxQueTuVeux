@@ -1,5 +1,5 @@
-<div class="body">
-  <h1>Liste des titres</h1>
+<div class="body" xmlns="http://www.w3.org/1999/html">
+  <h1>Playlist de la semaine</h1>
   <hr/>
 <div class="row">
   <table class="table">
@@ -7,32 +7,10 @@
     <th scope="col">Classement</th>
     <th scope="col">Nom</th>
     <th scope="col">Auteur</th>
-    <th scope="col">Genre</th>
     <th scope="col">Nombre de votes</th>
-    <th scope="col"></th>
+    <th scope="col">Écoute</th>
     </thead>
-    <tbody class="tab">
-    <tr *ngFor="let music of mesMusiques; index as i">
-      <td class="col-1">
-        {{i+1}}
-      </td>
-      <td class="col-4">
-        {{music.name}}
-      </td>
-      <td class="col-3">
-        {{music.auteur}}
-      </td>
-      <td class="col-3">
-        {{music.genre}}
-      </td>
-      <td class="col-2">
-        {{music.nbVotes}}
-      </td>
-      <td class="col-3">
-        <button class="btn btn-primary" (click)="ajouterVote()"> Ajouter à mon profil</button>
-      </td>
-    </tr>
-    </tbody>
+    <tbody id="playlist"></tbody>
   </table>
 
 </div>

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import {forEach} from '@angular/router/src/utils/collection';
-import GetOptions = firebase.firestore.GetOptions;
-import {DocumentSnapshot} from 'firebase-functions/lib/providers/firestore';
 
 @Component({
   selector: 'app-end-week-playlist',
@@ -10,114 +7,70 @@ import {DocumentSnapshot} from 'firebase-functions/lib/providers/firestore';
   styleUrls: ['./end-week-playlist.component.css']
 })
 export class EndWeekPlaylistComponent implements OnInit {
-  mesMusiques = [
-    {
-      idMusique: '1',
-      name: 'music 1',
-      auteur: 'moi',
-      duree: '3m50',
-      genre: 'rap'
-    },
-    {
-      idMusique: '2',
-      name: 'music 2',
-      auteur: 'toi',
-      duree: '3m10',
-      genre: 'rap'
-    },
-    {
-      idMusique: '3',
-      name: 'music 3',
-      auteur: 'vous',
-      duree: '4m50',
-      genre: 'metal'
-    }
-  ];
+  MusiqueVote: any[];
+  MesMusique: any[];
 
   constructor() {
+    this.MusiqueVote = [];
+    this.MesMusique = [];
   }
 
   ngOnInit() {
-    // this.afficherPlaylist();
-    let auteur: string;
-    let titre: string;
-    let genre: string;
-    const result = [];
-    let stockageMax;
-    const database = firebase.firestore();
-    database.collection('musiques').get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-        stockageMax = doc.data();
-        for (const key in stockageMax) {
-          const value = stockageMax[key];
-          console.log(key, ':', value);
-          if (key === 'auteur') { auteur = value; }
-          if (key === 'titre') { titre = value; }
-          if (key === 'genre') { genre = value; }
-        }
-        /*
-        const stockage = doc.data();
-        stockage.auteur.get().then(snap => {
-          stockage.auteur = snap.data();
-          stockageMax.push(stockage);
-        });*/
-        /*
-        const stat = {
-          'auteur': doc.data().auteur,
-          'genre': doc.data().genre
-        };
-        console.log(stat);
-        */
-        // result = result.concat(stat);
-        // this.renderMusic(doc);
-      });
-    });
-    // console.log(stockageMax);
-/*
-    for (let key = 0; key < stockageMax.length; key++) {
-      const value = stockageMax[key];
-      console.log('test');
-      console.log(key, '+', value, 'youpiiiii ?');
-    }
-    */
+  this.RecupererMusiquePlaylist();
   }
 
-  afficherPlaylist() {
+
+  RecupererMusiquePlaylist() {
     const database = firebase.firestore();
-    database.collection('musiques').get().then(function (querySnapshot) {
+    const MusiquePlaylist = [];
+    const TabMusique = [];
+    let nb = 0;
+    const playlist = document.querySelector('#playlist');
+    database.collection('playlist').orderBy('nbVote', 'desc').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, ' => ', doc.data());
+        // console.log(doc.id);
+        MusiquePlaylist.push(doc.data());
+        let tr = document.createElement('tr');
+        let classement = document.createElement('td');
+        let nom = document.createElement('td');
+        let artiste = document.createElement('td');
+        let nbVote = document.createElement('td');
+        let tdUri = document.createElement('td');
+        let uri = document.createElement('iframe');
+        let tdvote = document.createElement('td');
+        let vote = document.createElement('button');
+
+
+
+        nb++;
+
+        tr.setAttribute('classement', 'classement');
+        // @ts-ignore
+        classement.textContent = nb;
+        nom.textContent = doc.data().nom;
+        artiste.textContent = doc.data().artiste;
+        nbVote.textContent = doc.data().nbVote;
+        uri.setAttribute('src', 'https://open.spotify.com/embed?uri=' + doc.data().uri);
+        uri.setAttribute('width', '320');
+        uri.setAttribute('height', '90');
+        uri.setAttribute('frameborder', '0');
+        uri.setAttribute('allowtransparency', 'true');
+        uri.setAttribute('allow', 'encrypted-media');
+
+
+        tdUri.appendChild(uri);
+        tr.appendChild(classement);
+        tr.appendChild(nom);
+        tr.appendChild(artiste);
+        tr.appendChild(nbVote);
+        tr.appendChild(tdUri);
+
+        playlist.appendChild(tr);
+
       });
+      console.log(MusiquePlaylist);
+
     });
-  }
-  /*
-  afficherPlaylistB() {
-    const database = firebase.firestore();
-    let tableauMusique: string[];
-    database.collection('musiques').get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          console.log('New ==> ', doc.id, ' => ', doc.data());
-          console.log('New ==> ', doc.id, ' => ', doc.data().duree);
-          tableauMusique.push(doc.data().duree);
-      });
-      return tableauMusique;
-    });
-  }
-  */
-  renderMusic(doc) {
-    /*
-    const name = document.createElement('span');
-    const auteur = document.createElement('span');
-    const genre = document.createElement('span');
-    // name.textContent = doc.data().name;
-    auteur.textContent = doc.data().auteur;
-    genre.textContent = doc.data().genre;
-    console.log(auteur, '|', genre);
-    */
-
-
-
 
   }
 }
