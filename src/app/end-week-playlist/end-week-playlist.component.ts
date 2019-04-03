@@ -22,25 +22,18 @@ export class EndWeekPlaylistComponent implements OnInit {
 
   RecupererMusiquePlaylist() {
     const database = firebase.firestore();
-    const MusiquePlaylist = [];
-    const TabMusique = [];
     let nb = 0;
     const playlist = document.querySelector('#playlist');
     database.collection('playlist').orderBy('nbVote', 'desc').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // console.log(doc.id);
-        MusiquePlaylist.push(doc.data());
-        let tr = document.createElement('tr');
-        let classement = document.createElement('td');
-        let nom = document.createElement('td');
-        let artiste = document.createElement('td');
-        let nbVote = document.createElement('td');
-        let tdUri = document.createElement('td');
-        let uri = document.createElement('iframe');
-        let tdvote = document.createElement('td');
-        let vote = document.createElement('button');
 
-
+        const tr = document.createElement('tr');
+        const classement = document.createElement('td');
+        const nom = document.createElement('td');
+        const artiste = document.createElement('td');
+        const nbVote = document.createElement('td');
+        const tdUri = document.createElement('td');
+        const uri = document.createElement('iframe');
 
         nb++;
 
@@ -68,8 +61,6 @@ export class EndWeekPlaylistComponent implements OnInit {
         playlist.appendChild(tr);
 
       });
-      console.log(MusiquePlaylist);
-
     });
 
   }

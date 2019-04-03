@@ -29,7 +29,6 @@ export class TrackComponent implements OnInit {
     private spotifyService: SpotifyService,
   ) {
     const database = firebase.firestore();
-    const musique = database.collection('musiques');
     route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -89,6 +88,8 @@ export class TrackComponent implements OnInit {
     const now = new Date();
     const date = now.toDateString();
     const musique = database.collection('musiques').doc();
+    const profil = database.collection('profil').doc();
+    const profilCol = database.collection('profil');
     const vote = database.collection('vote').doc();
     const artiste = this.artiste;
     const titre = this.titre;
@@ -101,12 +102,13 @@ export class TrackComponent implements OnInit {
     const playlist = database.collection('playlist');
     const playlistDoc = database.collection('playlist').doc();
     let playlistId = '';
+    let profilId = '';
     let nbVote = 1;
 
 
     musiqueDoc.where('uri', '==', this.uri).get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-        console.log(doc.id)
+        console.log(doc.id);
         nb = nb + 1;
       });
       if (nb > 0) {
@@ -114,14 +116,13 @@ export class TrackComponent implements OnInit {
           idVote: vote.id,
           idUtilisateur: user,
           idMusique: musique.id,
-          note: 0,
-          nbVote: 0,
           dateVote: date,
+          uri: uri
         });
       } else {
         musique.set({
           idMusique: musique.id,
-          auteur: artiste,
+          artiste: artiste,
           duree: duree,
           uri: uri,
         });
@@ -130,9 +131,8 @@ export class TrackComponent implements OnInit {
           idVote: vote.id,
           idUtilisateur: user,
           idMusique: musique.id,
-          note: 0,
-          nbVote: 0,
           dateVote: date,
+          uri: uri
         });
       }
     });
@@ -157,5 +157,24 @@ export class TrackComponent implements OnInit {
         });
       }
     });
+    profilCol.where('uri', '==', uri).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+      nb = nb++;
+      profilId = doc.id;
+      });
+      if (nb > 0) {
+        profilCol.doc(playlistId).update({
+          dateVote: date,
+        });
+      } else {
+        profil.set({
+          dateVote: date,
+          idUtilisateur: user,
+          nom: titre,
+          artiste: artiste,
+          uri: uri
+        });
+      }
+  });
   }
 }

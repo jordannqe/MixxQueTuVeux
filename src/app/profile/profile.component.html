@@ -1,39 +1,15 @@
-<div class="body">
-  <h1>Voter pour mes titres préférés</h1>
-<hr/>
-<div class="row">
-  <table class="table">
-    <thead class="header">
-    <th scope="col">Nom</th>
-    <th scope="col">Auteur</th>
-    <th scope="col">Ma note</th>
-    <th scope="col"></th>
-    </thead>
-    <tbody class="tab">
-    <tr *ngFor="let music of mesMusiques">
-      <td class="col-3">
-        {{music.name}}
-      </td>
-      <td class="col-3">
-        {{music.auteur}}
-      </td>
-      <td class="col-3">
-        <form>
-          <select id="mySelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </form>
-      </td>
-      <td>
-        <input class="btn btn-primary" type="button" value="Ajouter">
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<div class="body" xmlns="http://www.w3.org/1999/html">
+  <h1>Mes votes de la journée</h1>
+  <hr/>
+  <div class="row">
+    <table class="table">
+      <thead class="header">
+      <th scope="col">Nom</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Écoute</th>
+      </thead>
+      <tbody id="profil"></tbody>
+    </table>
 
+  </div>
 </div>
