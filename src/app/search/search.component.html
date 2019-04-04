@@ -1,10 +1,10 @@
-<div class="form-inline justify-content-center mb-3">
+<div class="form-inline justify-content-center mb-3 searchBar">
   <input type="search" #newquery [value]="query" (keydown.enter)="submit(newquery.value)" class="form-control form-control-lg w-75"
          placeholder="Recherche de musiques ou d'artiste">
-  <button (click)="submit(newquery.value)" class="btn btn-primary ml-3" type="button">Rechercher</button>
+  <button (click)="submit(newquery.value)" class="btn btn-primary ml-3 hvr-forward" type="button">Rechercher</button>
 </div>
 
-<div *ngIf="results">
+<div class="searchInfo" *ngIf="results">
   <p *ngIf="!results.length">
     Pas de résultat'{{ query }}'.
   </p>
